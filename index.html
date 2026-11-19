@@ -133,10 +133,10 @@
 
         <!-- 結果表示エリア -->
         <div id="resultArea" class="hidden mt-8 bg-white p-6 rounded-3xl shadow-md border border-orange-100">
-            <h2 class="font-bold text-orange-700 mb-3 text-center">完成した文章はこちらです 🎉</h2>
-            <p class="text-xs text-gray-500 mb-3 text-center">文章は自由に編集できます。</p>
+            <h2 class="font-bold text-orange-700 mb-2 text-center">完成した文章はこちらです 🎉</h2>
+            <p class="text-xs text-gray-500 mb-3 text-center">※そのままでも自然ですが、少し言葉を足すとさらに喜ばれます😊</p>
             
-            <textarea id="reviewText" class="w-full h-48 bg-orange-50 border border-orange-200 text-gray-700 py-3 px-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent transition mb-3 resize-none leading-relaxed"></textarea>
+            <textarea id="reviewText" class="w-full h-52 bg-orange-50 border border-orange-200 text-gray-700 py-3 px-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent transition mb-3 resize-none leading-relaxed"></textarea>
             
             <!-- 別の表現・構成に作り直すボタン -->
             <button onclick="generateReview()" class="w-full bg-orange-50 text-orange-600 border border-orange-200 font-bold py-2.5 px-4 rounded-full hover:bg-orange-100 transition active:scale-95 mb-4 text-sm flex items-center justify-center gap-1.5">
@@ -159,7 +159,7 @@
                 文章をコピーする
             </button>
 
-            <!-- TODO: 下記のリンクをご自身のGoogleビジネスプロフィールのクチコミリンクに変更してください -->
+            <!-- Googleビジネスプロフィールのクチコミリンク -->
             <a href="https://search.google.com/local/writereview?placeid=ChIJE5x-FEoGAWARUlw5yNF8mBE" id="googleBtn" target="_blank" rel="noopener noreferrer" class="hidden w-full bg-blue-600 text-white font-bold py-4 px-6 rounded-full shadow-lg shadow-blue-200 hover:bg-blue-700 transition active:scale-95 text-center flex items-center justify-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
@@ -504,15 +504,12 @@
                 }
             }
 
-            // 万が一候補が空なら全インデックスを候補にする
             if (availableIndices.length === 0) {
                 availableIndices = texts.map((_, i) => i);
             }
 
-            // 候補の中から完全にランダムで1つ選択（毎回違うパターンになる）
             const chosenIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
 
-            // 履歴を更新して保存
             history.push(chosenIndex);
             if (history.length > 10) history.shift();
             localStorage.setItem(historyKey, JSON.stringify(history));
@@ -520,16 +517,44 @@
             return texts[chosenIndex];
         }
 
-        // ランダムな自然接続フレーズ（冒頭や段落のマンネリ防止用）
+        // ランダムな自然接続フレーズ（文と文を滑らかに繋ぐ）
         function getRandomConnector(type) {
             const connectors = {
                 symptomIntro: ["", "", "以前から", "実は", "ここ最近、"],
                 praiseIntro: ["", "", "特に印象的だったのは、", "実際に通ってみて感じたのは、", "何より嬉しいのが、"],
-                accessIntro: ["", "", "また、", "通いやすさの面でも、", "それに加えて、"],
-                resultIntro: ["", "", "おかげさまで、", "結果として、", "今では"]
+                accessIntro: ["", "", "また、", "それに、", "通いやすさの面でも、"],
+                resultIntro: ["", "", "おかげさまで、", "その結果、", "今では"]
             };
             const list = connectors[type] || [""];
             return list[Math.floor(Math.random() * list.length)];
+        }
+
+        // 人間味フィルター（不自然な改行をなくし、同じ地名やキーワードの過剰重複を自然に言い換える）
+        function humanizeText(rawText) {
+            let text = rawText;
+
+            // 1. 「右京区」が2回以上出る場合、2回目以降を自然な言葉に置換（SEO効果は1回で十分なため）
+            let ukyoCount = 0;
+            text = text.replace(/右京区(・|の|内|周辺|エリア)?/g, (match) => {
+                ukyoCount++;
+                if (ukyoCount === 1) return match;
+                const alts = ["この周辺", "地元", "地域", ""];
+                return alts[Math.floor(Math.random() * alts.length)];
+            });
+
+            // 2. 「西院」が3回以上出る場合、3回目以降を自然な言葉に置換
+            let saiinCount = 0;
+            text = text.replace(/西院(駅周辺|駅近く|エリア|の)?/g, (match) => {
+                saiinCount++;
+                if (saiinCount <= 2) return match;
+                const alts = ["こちら", "この辺り", "駅周辺"];
+                return alts[Math.floor(Math.random() * alts.length)];
+            });
+
+            // 3. 置換によって生じた助詞の重複（「のの」「での」など）を綺麗に整える
+            text = text.replace(/のの/g, "の").replace(/での/g, "で").replace(/、。/g, "。").replace(/、、/g, "、");
+
+            return text;
         }
 
         function generateReview() {
@@ -542,25 +567,21 @@
             const errorMsg = document.getElementById('errorMessage');
             const resultArea = document.getElementById('resultArea');
 
-            // いずれかが未選択の場合、エラーメッセージを表示して処理を中断
             if (!q1Key || !q2Key || !q3Key || !q4Key || !q5Key) {
                 errorMsg.classList.remove('hidden');
-                // 少しスクロールしてエラーを見やすくする
                 window.scrollBy({ top: -50, behavior: 'smooth' });
                 return;
             }
 
-            // エラーがない場合はメッセージを隠す
             errorMsg.classList.add('hidden');
 
-            // 各キーからバリエーション文章を取得
             const text1 = getVariationText(q1Key);
             const text2 = getVariationText(q2Key);
             const text3 = getVariationText(q3Key);
             const text4 = getVariationText(q4Key);
             const text5 = getVariationText(q5Key);
 
-            // 文章の構成（順番）も毎回変わるように6パターンを用意し、履歴ベースでランダム選択
+            // 文章の構成（順番）も毎回変わるように6パターンを用意
             const structureHistoryKey = 'review_structure_history';
             let structHistory = [];
             try {
@@ -570,7 +591,7 @@
             }
 
             const totalStructures = 6;
-            const recentStructs = structHistory.slice(-4); // 直近4回と同じ構成を避ける
+            const recentStructs = structHistory.slice(-4);
             let availableStructs = [];
             for (let i = 0; i < totalStructures; i++) {
                 if (!recentStructs.includes(i)) {
@@ -586,42 +607,47 @@
             if (structHistory.length > 10) structHistory.shift();
             localStorage.setItem(structureHistoryKey, JSON.stringify(structHistory));
 
+            // 改行スタイルを人間らしく制御（70%は改行なしの自然な1段落、30%は話の切れ目で1回だけ改行）
+            const useSingleBreak = Math.random() < 0.3;
+            const sep = useSingleBreak ? "\n" : "";
+
             let reviewText = "";
             switch (structureIndex) {
                 case 0:
-                    // パターンA：王道・時系列型（きっかけ → 施術・雰囲気・通いやすさ → 変化）
-                    reviewText = `${text1}\n\n${getRandomConnector('praiseIntro')}${text3}\n${text2}\n${getRandomConnector('accessIntro')}${text4}\n\n${getRandomConnector('resultIntro')}${text5}`;
+                    // パターンA：王道・時系列型
+                    reviewText = `${text1}${getRandomConnector('praiseIntro')}${text3}${sep}${text2}${getRandomConnector('accessIntro')}${text4}${getRandomConnector('resultIntro')}${text5}`;
                     break;
                 case 1:
-                    // パターンB：結論・感動ファースト型（変化・おすすめ → きっかけ・施術 → 雰囲気・通いやすさ）
-                    reviewText = `${text5}\n\n${getRandomConnector('symptomIntro')}${text1}\n${text3}\n\n${text2}\n${getRandomConnector('accessIntro')}${text4}`;
+                    // パターンB：結論・感動ファースト型
+                    reviewText = `${text5}${sep}${getRandomConnector('symptomIntro')}${text1}${text3}${text2}${getRandomConnector('accessIntro')}${text4}`;
                     break;
                 case 2:
-                    // パターンC：立地・雰囲気から入る自然な導入型（通いやすさ・雰囲気 → きっかけ・施術 → 変化）
-                    reviewText = `${text4}\n${text2}\n\n${getRandomConnector('symptomIntro')}${text1}\n${getRandomConnector('praiseIntro')}${text3}\n\n${getRandomConnector('resultIntro')}${text5}`;
+                    // パターンC：立地・雰囲気から入る自然な導入型
+                    reviewText = `${text4}${text2}${sep}${getRandomConnector('symptomIntro')}${text1}${getRandomConnector('praiseIntro')}${text3}${getRandomConnector('resultIntro')}${text5}`;
                     break;
                 case 3:
-                    // パターンD：施術の良さピックアップ型（施術 → きっかけ → 変化 → 通いやすさ・雰囲気）
-                    reviewText = `${text3}\n${text1}\n\n${getRandomConnector('resultIntro')}${text5}\n\n${getRandomConnector('accessIntro')}${text4}\n${text2}`;
+                    // パターンD：施術の良さピックアップ型
+                    reviewText = `${text3}${text1}${sep}${getRandomConnector('resultIntro')}${text5}${getRandomConnector('accessIntro')}${text4}${text2}`;
                     break;
                 case 4:
-                    // パターンE：院内の雰囲気ファースト型（雰囲気 → きっかけ・施術 → 変化・通いやすさ）
-                    reviewText = `${text2}\n\n${getRandomConnector('symptomIntro')}${text1}\n${text3}\n\n${getRandomConnector('resultIntro')}${text5}\n${text4}`;
+                    // パターンE：院内の雰囲気ファースト型
+                    reviewText = `${text2}${getRandomConnector('symptomIntro')}${text1}${sep}${text3}${getRandomConnector('resultIntro')}${text5}${text4}`;
                     break;
                 case 5:
-                    // パターンF：お悩み解決ストーリー型（きっかけ・変化 → 施術・通いやすさ・雰囲気）
-                    reviewText = `${text1}\n${getRandomConnector('resultIntro')}${text5}\n\n${getRandomConnector('praiseIntro')}${text3}\n${text4}\n${text2}`;
+                    // パターンF：お悩み解決ストーリー型
+                    reviewText = `${text1}${getRandomConnector('resultIntro')}${text5}${sep}${getRandomConnector('praiseIntro')}${text3}${text4}${text2}`;
                     break;
             }
+
+            // 人間味フィルターを適用して不自然な重複を解消
+            reviewText = humanizeText(reviewText);
             
             document.getElementById('reviewText').value = reviewText;
             
-            // 結果エリアを表示
             resultArea.classList.remove('hidden');
-            document.getElementById('googleBtn').classList.add('hidden'); // コピーされるまで隠す
+            document.getElementById('googleBtn').classList.add('hidden');
             document.getElementById('copyToast').classList.add('hidden');
             
-            // 結果エリアへスムーズにスクロール
             setTimeout(() => {
                 resultArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, 100);
@@ -629,33 +655,34 @@
 
         function copyText() {
             const textarea = document.getElementById('reviewText');
-            // テキストエリアを選択状態にする（ユーザーへの視覚的フィードバック）
             textarea.select();
-            textarea.setSelectionRange(0, 99999); // モバイルブラウザ対応
+            textarea.setSelectionRange(0, 99999);
 
             let copied = false;
             try {
-                // iFrame内や幅広い環境で動作しやすい execCommand を優先実行
                 copied = document.execCommand('copy');
             } catch (e) {
                 copied = false;
             }
 
             if (copied) {
-                document.getElementById('copyToast').classList.remove('hidden');
-                document.getElementById('googleBtn').classList.remove('hidden');
-                document.getElementById('googleBtn').classList.add('flex');
+                onCopySuccess();
             } else if (navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(textarea.value).then(() => {
-                    document.getElementById('copyToast').classList.remove('hidden');
-                    document.getElementById('googleBtn').classList.remove('hidden');
-                    document.getElementById('googleBtn').classList.add('flex');
+                    onCopySuccess();
                 }).catch(() => {
                     showCopyError(textarea);
                 });
             } else {
                 showCopyError(textarea);
             }
+        }
+
+        function onCopySuccess() {
+            document.getElementById('copyToast').classList.remove('hidden');
+            const googleBtn = document.getElementById('googleBtn');
+            googleBtn.classList.remove('hidden');
+            googleBtn.classList.add('flex');
         }
 
         function showCopyError(textarea) {
@@ -668,51 +695,17 @@
             }
         }
 
-        function copyText() {
-            const textarea = document.getElementById('reviewText');
-            // テキストエリアを選択状態にする（ユーザーへの視覚的フィードバック）
-            textarea.select();
-            textarea.setSelectionRange(0, 99999); // モバイルブラウザ対応
-
-            // クリップボードAPIを使用してコピー
-            navigator.clipboard.writeText(textarea.value).then(() => {
-                // コピー成功時の処理
-                document.getElementById('copyToast').classList.remove('hidden');
-                document.getElementById('googleBtn').classList.remove('hidden');
-                document.getElementById('googleBtn').classList.add('flex'); // hiddenを外した後にflexを当てる
-            }).catch(err => {
-                // 古いブラウザ等で失敗した場合のフォールバック
-                try {
-                    document.execCommand('copy');
-                    document.getElementById('copyToast').classList.remove('hidden');
-                    document.getElementById('googleBtn').classList.remove('hidden');
-                    document.getElementById('googleBtn').classList.add('flex');
-                } catch (e) {
-                    // フォールバックも失敗した場合
-                    const errorDiv = document.createElement('div');
-                    errorDiv.className = "text-red-500 text-sm mt-2 font-bold";
-                    errorDiv.innerText = "自動コピーできませんでした。長押しして手動でコピーしてください。";
-                    textarea.parentNode.insertBefore(errorDiv, textarea.nextSibling);
-                }
-            });
-        }
-
         function showQRCode() {
             const modal = document.getElementById('qrModal');
             const container = document.getElementById('qrImageContainer');
             modal.classList.remove('hidden');
             
-            // 現在のページのURLを取得
             let currentUrl = window.location.href;
-            
-            // プレビュー環境など、特殊なURLの場合はダミーURLを使用（エラー回避）
             if(currentUrl.startsWith('about:') || currentUrl.startsWith('blob:') || currentUrl.startsWith('file:')) {
                 currentUrl = 'https://example.com/saiin-seikotsuin-review'; 
             }
 
-            // QRコード生成APIを呼び出して画像タグを作成
             const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(currentUrl)}&color=ea580c`;
-            
             container.innerHTML = `<img src="${qrApiUrl}" alt="QR Code" class="w-48 h-48 mx-auto shadow-sm rounded-xl">`;
         }
 
