@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>西院整骨院 クチコミ作成サポート</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            /* 丸みのあるフォントを優先的に指定し、親しみやすさを演出 */
+            font-family: 'Zen Maru Gothic', 'Hiragino Rounded', 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', sans-serif;
+            background-color: #FFF9F5; /* 温かみのあるペールオレンジの背景 */
+        }
+        /* セレクトボックスの矢印を少し可愛くカスタマイズ */
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f97316' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1.2em;
+        }
+    </style>
+</head>
+<body class="text-gray-700 antialiased pb-20">
+
+    <header class="max-w-xl mx-auto pt-8 pb-6 px-4 text-center">
+        <h1 class="text-2xl font-bold text-orange-600 mb-2">🌿 西院整骨院 🌿<br>感想作成サポート</h1>
+        <p class="text-sm text-gray-500 bg-white p-3 rounded-2xl shadow-sm border border-orange-100 inline-block">
+            選択肢をポチポチ選ぶだけで、<br>Googleへの感想文が簡単に作れます😊
+        </p>
+    </header>
+
+    <main class="max-w-xl mx-auto px-4 space-y-5">
+        
+        <!-- Q1 -->
+        <div class="bg-white p-5 rounded-3xl shadow-sm border border-orange-50 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-2 h-full bg-orange-300"></div>
+            <label class="block mb-3 font-bold text-orange-700">
+                <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full text-xs mr-1">Q1</span>
+                どのようなお悩みで来院されましたか？ 🤕
+            </label>
+            <select id="q1" class="w-full bg-orange-50 border border-orange-200 text-gray-700 py-3 px-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent transition">
+                <option value="">タップして選んでください ▼</option>
+                <option value="q1-1">肩こり・頭痛がひどかった</option>
+                <option value="q1-2">腰痛・ぎっくり腰になった</option>
+                <option value="q1-3">股関節の痛み・違和感</option>
+                <option value="q1-4">膝の痛み・歩くのが辛い</option>
+                <option value="q1-5">背骨矯正・姿勢を良くしたい</option>
+                <option value="q1-6">足裏の痛み（足底筋膜炎）</option>
+                <option value="q1-7">手首の痛み（腱鞘炎）</option>
+                <option value="q1-8">首の痛み・寝違え・ストレートネック</option>
+                <option value="q1-9">坐骨神経痛や足のしびれ</option>
+                <option value="q1-10">スポーツでの怪我・パフォーマンス向上</option>
+            </select>
+        </div>
+
+        <!-- Q2 -->
+        <div class="bg-white p-5 rounded-3xl shadow-sm border border-orange-50 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-2 h-full bg-yellow-300"></div>
+            <label class="block mb-3 font-bold text-orange-700">
+                <span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full text-xs mr-1">Q2</span>
+                院内の雰囲気はいかがですか？ ✨
+            </label>
+            <select id="q2" class="w-full bg-orange-50 border border-orange-200 text-gray-700 py-3 px-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition">
+                <option value="">タップして選んでください ▼</option>
+                <option value="q2-1">清潔でリラックスできる</option>
+                <option value="q2-2">明るくて入りやすい雰囲気</option>
+                <option value="q2-3">開放感があり緊張せずに受けられる</option>
+                <option value="q2-4">笑顔の挨拶で居心地が良い</option>
+                <option value="q2-5">清潔で癒される空間</option>
+            </select>
+        </div>
+
+        <!-- Q3 -->
+        <div class="bg-white p-5 rounded-3xl shadow-sm border border-orange-50 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-2 h-full bg-green-300"></div>
+            <label class="block mb-3 font-bold text-orange-700">
+                <span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs mr-1">Q3</span>
+                施術やスタッフの対応は？ 👐
+            </label>
+            <select id="q3" class="w-full bg-orange-50 border border-orange-200 text-gray-700 py-3 px-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition">
+                <option value="">タップして選んでください ▼</option>
+                <option value="q3-1">説明がとても丁寧だった</option>
+                <option value="q3-2">背骨矯正でスッキリ改善した</option>
+                <option value="q3-3">ショックマスターが効果的だった</option>
+                <option value="q3-4">パーソナルトレーニングで根本改善</option>
+                <option value="q3-5">高い技術力と専門知識で頼れる</option>
+            </select>
+        </div>
+
+        <!-- Q4 -->
+        <div class="bg-white p-5 rounded-3xl shadow-sm border border-orange-50 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-2 h-full bg-blue-300"></div>
+            <label class="block mb-3 font-bold text-orange-700">
+                <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs mr-1">Q4</span>
+                通いやすさについてはいかがですか？ 🚶‍♀️
+            </label>
+            <select id="q4" class="w-full bg-orange-50 border border-orange-200 text-gray-700 py-3 px-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition">
+                <option value="">タップして選んでください ▼</option>
+                <option value="q4-1">駅近でアクセスが良い</option>
+                <option value="q4-2">完全予約制で待ち時間なし</option>
+                <option value="q4-3">仕事終わりにも通いやすい</option>
+                <option value="q4-4">LINEで予約できて便利</option>
+                <option value="q4-5">周辺環境が良く便利</option>
+            </select>
+        </div>
+
+        <!-- Q5 -->
+        <div class="bg-white p-5 rounded-3xl shadow-sm border border-orange-50 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-2 h-full bg-pink-300"></div>
+            <label class="block mb-3 font-bold text-orange-700">
+                <span class="bg-pink-100 text-pink-700 px-2 py-1 rounded-full text-xs mr-1">Q5</span>
+                施術後の変化はいかがですか？ 💖
+            </label>
+            <select id="q5" class="w-full bg-orange-50 border border-orange-200 text-gray-700 py-3 px-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent transition">
+                <option value="">タップして選んでください ▼</option>
+                <option value="q5-1">劇的に体が軽くなった！</option>
+                <option value="q5-2">徐々に良くなっているので続けたい</option>
+                <option value="q5-3">他の方にもおすすめしたい！</option>
+                <option value="q5-4">もっと早く来ればよかった</option>
+                <option value="q5-5">日常生活が楽になった</option>
+            </select>
+        </div>
+
+        <!-- エラーメッセージ（未選択がある場合） -->
+        <div id="errorMessage" class="hidden text-center text-red-500 font-bold bg-red-50 p-3 rounded-xl border border-red-200">
+            まだ選んでいない項目があります 💦
+        </div>
+
+        <button onclick="generateReview()" class="w-full bg-gradient-to-r from-orange-400 to-orange-500 text-white font-bold py-4 px-6 rounded-full shadow-lg shadow-orange-200 hover:from-orange-500 hover:to-orange-600 transform transition active:scale-95 text-lg">
+            ✨ 感想文をつくる ✨
+        </button>
+
+        <!-- 結果表示エリア -->
+        <div id="resultArea" class="hidden mt-8 bg-white p-6 rounded-3xl shadow-md border border-orange-100">
+            <h2 class="font-bold text-orange-700 mb-3 text-center">完成した文章はこちらです 🎉</h2>
+            <p class="text-xs text-gray-500 mb-3 text-center">文章は自由に編集できます。</p>
+            
+            <textarea id="reviewText" class="w-full h-48 bg-orange-50 border border-orange-200 text-gray-700 py-3 px-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent transition mb-3 resize-none leading-relaxed"></textarea>
+            
+            <!-- 別の表現・構成に作り直すボタン -->
+            <button onclick="generateReview()" class="w-full bg-orange-50 text-orange-600 border border-orange-200 font-bold py-2.5 px-4 rounded-full hover:bg-orange-100 transition active:scale-95 mb-4 text-sm flex items-center justify-center gap-1.5">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+                別の言い回し・構成に変える
+            </button>
+            
+            <!-- コピー完了メッセージ -->
+            <div id="copyToast" class="hidden text-center text-green-600 font-bold bg-green-50 p-3 rounded-xl mb-4 border border-green-200">
+                ✅ 文章をコピーしました！<br>
+                <span class="text-sm font-normal">下のボタンからGoogleを開いて貼り付けてください。</span>
+            </div>
+
+            <button onclick="copyText()" class="w-full bg-gray-800 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-gray-700 transition active:scale-95 mb-4 flex items-center justify-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                </svg>
+                文章をコピーする
+            </button>
+
+            <!-- TODO: 下記のリンクをご自身のGoogleビジネスプロフィールのクチコミリンクに変更してください -->
+            <a href="https://search.google.com/local/writereview?placeid=ChIJE5x-FEoGAWARUlw5yNF8mBE" id="googleBtn" target="_blank" rel="noopener noreferrer" class="hidden w-full bg-blue-600 text-white font-bold py-4 px-6 rounded-full shadow-lg shadow-blue-200 hover:bg-blue-700 transition active:scale-95 text-center flex items-center justify-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+                Googleマップを開く
+            </a>
+        </div>
+
+        <!-- スタッフ用：QRコード表示ボタン -->
+        <div class="text-center mt-10 pb-4">
+            <button onclick="showQRCode()" class="text-sm text-gray-400 border-b border-gray-300 hover:text-orange-600 hover:border-orange-600 transition pb-1">
+                📱 スタッフ用：このページのQRコードを表示
+            </button>
+        </div>
+    </main>
+
+    <!-- QRコード表示用モーダル（普段は非表示） -->
+    <div id="qrModal" class="hidden fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 px-4 backdrop-blur-sm transition-opacity">
+        <div class="bg-white p-6 rounded-3xl shadow-xl max-w-sm w-full text-center relative">
+            <button onclick="closeQRCode()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 bg-gray-100 rounded-full p-1">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <h3 class="text-lg font-bold text-orange-700 mb-2">患者様読み取り用</h3>
+            <p class="text-xs text-gray-500 mb-4 leading-relaxed">受付のタブレットでこの画面を表示し、<br>患者様のスマートフォンで読み取って頂いてください。</p>
+            
+            <div id="qrImageContainer" class="flex justify-center mb-5 min-h-[200px] items-center bg-gray-50 rounded-2xl p-4">
+                <!-- ここにQRコード画像が自動生成されます -->
+            </div>
+            
+            <button onclick="closeQRCode()" class="w-full bg-gray-200 text-gray-700 font-bold py-3 px-6 rounded-full hover:bg-gray-300 transition">
+                閉じる
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const reviewVariations = {
+            // Q1: 症状（各7パターン）
+            'q1-1': [
+                "長年ひどい肩こりと頭痛に悩んでおり、西院駅周辺で根本改善できる整骨院を探してこちらを受診しました。",
+                "慢性的な肩こりからくる頭痛が辛く、右京区西院で評判の良いこちらの整体にお世話になることにしました。",
+                "ガチガチの肩こりと頻繁に起きる頭痛をどうにかしたくて、西院エリアで口コミ評価が高かったこちらに来院しました。",
+                "ひどい肩の張りと頭痛に長年苦しんできましたが、西院駅近くのこちらの整骨院でしっかり診てもらうことにしました。",
+                "肩こりが限界に達し頭痛もひどかったため、根本から治療してくれる右京区の西院整骨院さんに駆け込みました。",
+                "デスクワークによる慢性的な肩こりと重たい頭痛を解消したく、右京区・西院で実績のあるこちらの接骨院を頼りました。",
+                "マッサージに行ってもすぐ戻る頑固な肩こりと頭痛に悩み、西院駅周辺で評判のこちらで本格的に治療を始めることにしました。"
+            ],
+            'q1-2': [
+                "急な腰痛（ぎっくり腰）で辛かったため、右京区・西院エリアで口コミ評価が良かったこちらの整骨院に駆け込みました。",
+                "突然のぎっくり腰で歩くのもやっとの状態になり、西院駅周辺で信頼できるこちらの整骨院に急遽診ていただきました。",
+                "慢性的な腰痛が悪化して動けなくなり、右京区で根本治療をしてくれると評判の西院整骨院さんを受診しました。",
+                "耐えられないほどの腰の痛み（ぎっくり腰）に襲われ、西院エリアで治療技術が高いと噂のこちらに助けを求めました。",
+                "日常生活に支障が出るレベルの腰痛に悩み、右京区西院で腰の治療に強いこちらの整体院にお世話になっています。",
+                "朝起きた瞬間に腰に激痛が走り、右京区内で急な腰痛にも対応してくれる西院駅近くのこちらに飛び込みました。",
+                "長年抱えていた腰の重だるさと痛みが限界を迎え、西院エリアで根本から治せると口コミで見たこちらを受診しました。"
+            ],
+            'q1-3': [
+                "歩くのも辛い股関節の痛みが続き、右京区西院にあるこちらの整体・整骨院に相談しました。",
+                "股関節の痛みがひどく、階段の昇り降りも辛かったため、西院駅近くのこちらで治療をお願いすることにしました。",
+                "長引く股関節の不調を改善したく、右京区内で専門的な治療が受けられる西院整骨院さんを訪れました。",
+                "歩行時に感じる股関節の痛みに限界を感じ、西院エリアで実績のあるこちらの整骨院に駆け込みました。",
+                "股関節の痛みが日常生活に影響し始めたので、右京区西院で評判の良いこちらの整体を受診しました。",
+                "立ち上がる時や歩く時に股関節に違和感と痛みがあり、右京区・西院周辺でしっかり診てくれるこちらにお願いしました。",
+                "なかなか良くならない股関節の詰まり感と痛みを根本から治したくて、西院駅近くのこちらの接骨院に通い始めました。"
+            ],
+            'q1-4': [
+                "膝の痛みがひどくて曲げ伸ばしも辛く、右京区西院にあるこちらの整体・整骨院に相談しました。",
+                "階段の昇り降りの際に膝が痛むため、西院駅近くのこちらで専門的な治療をお願いすることにしました。",
+                "長引く膝の不調を根本から改善したく、右京区内で治療実績の豊富な西院整骨院さんを訪れました。",
+                "歩くたびに感じる膝の痛みに限界を感じ、西院エリアで口コミ評価の高いこちらの整骨院に駆け込みました。",
+                "慢性的な膝の痛みが日常生活に影響し始めたので、右京区西院で評判の良いこちらの整体を受診しました。",
+                "正座やしゃがむ動作で膝に強い痛みが出るようになり、右京区・西院エリアで信頼できるこちらの整骨院を頼りました。",
+                "加齢や運動による膝の痛みをどうにかしたくて、西院駅周辺で根本治療を行っているこちらにお世話になることにしました。"
+            ],
+            'q1-5': [
+                "背骨の歪みが気になり、本格的な背骨矯正と姿勢改善ができる右京区の整骨院を探して通い始めました。",
+                "自身の姿勢の悪さや背骨のゆがみを根本から直したくて、西院駅周辺で本格的な背骨矯正を行っているこちらを選びました。",
+                "長年の悪い姿勢と背骨の歪みが不調の原因だと思い、右京区西院で姿勢改善に定評のある西院整骨院さんに相談しました。",
+                "猫背や背骨の歪みが以前から気になっており、根本的な背骨矯正をしてくれる西院エリアの整骨院を探して来院しました。",
+                "姿勢の悪さからくる体の不調を感じ、右京区で専門的な背骨矯正治療が受けられるこちらの接骨院に通うことにしました。",
+                "鏡を見るたびに気になる姿勢の歪みを整えたくて、西院駅近くで評判の背骨矯正が受けられるこちらを訪れました。",
+                "身体の土台である背骨からしっかり整えたいと思い、右京区・西院エリアで技術力の高いこちらの整体院を選びました。"
+            ],
+            'q1-6': [
+                "長引く足裏の痛み（足底筋膜炎）をどうにかしたくて、右京区西院エリアで専門的な治療が得意なこちらを受診しました。",
+                "歩くたびに痛む足底筋膜炎に悩み、西院駅近くで専門的な治療をしてくれるこちらの整骨院にお願いしました。",
+                "なかなか治らない足底筋膜炎の激痛を抱え、右京区で治療実績の豊富な西院整骨院さんに駆け込みました。",
+                "朝起きると特に痛い足底筋膜炎を改善するため、西院エリアで根本治療ができるこちらの整体院を頼りました。",
+                "日常生活も辛い足裏の痛み（足底筋膜炎）を解消したくて、右京区西院で評判の良いこちらの整骨院に相談しました。",
+                "一歩踏み出すたびに走る足裏の痛みが辛く、右京区内で足底筋膜炎の治療実績があるこちらにお世話になっています。",
+                "湿布やインソールでも治らなかった足底筋膜炎を根本から治したくて、西院駅近くのこちらの接骨院を受診しました。"
+            ],
+            'q1-7': [
+                "手首の使いすぎによる腱鞘炎の辛い痛みをどうにかしたくて、右京区西院エリアで専門的な治療が得意なこちらを受診しました。",
+                "動かすたびに痛む手首の腱鞘炎に悩み、西院駅近くで専門的な治療をしてくれるこちらの整骨院にお願いしました。",
+                "なかなか治らない頑固な腱鞘炎を抱え、右京区で治療実績の豊富な西院整骨院さんに駆け込みました。",
+                "慢性的な手首の腱鞘炎の痛みを改善するため、西院エリアで根本治療ができるこちらの整体院を頼りました。",
+                "家事や仕事にも支障が出る腱鞘炎の痛みを解消したくて、右京区西院で評判の良いこちらの整骨院に相談しました。",
+                "物を持つのも辛い手首の腱鞘炎が長引いていたため、右京区・西院周辺で専門治療が受けられるこちらに来院しました。",
+                "安静にしていてもなかなか引かない腱鞘炎の痛みを早く治したくて、西院駅近くのこちらの接骨院を頼りました。"
+            ],
+            'q1-8': [
+                "辛い首の痛みと寝違えを繰り返しており、右京区西院で首の治療に定評があるこちらを受診しました。",
+                "ストレートネックからくる首周りの重だるさが限界で、西院駅近くのこちらの整骨院に相談しました。",
+                "首の痛みで後ろを振り向くのも辛くなり、右京区で根本治療ができると評判の西院整骨院さんに駆け込みました。",
+                "慢性的な首のコリとストレートネックを改善したく、西院エリアで口コミ評価が高かったこちらに来院しました。",
+                "酷い寝違えで首が動かせなくなり、右京区西院で確かな技術を持つこちらの接骨院にお世話になることにしました。",
+                "スマホやパソコン作業によるストレートネックと首の痛みが辛く、右京区・西院で評判のこちらで診てもらうことにしました。",
+                "頻繁に起こる寝違えと首のハリを根本から解消したくて、西院駅周辺で信頼できるこちらの整体院を選びました。"
+            ],
+            'q1-9': [
+                "お尻から足にかけての辛い坐骨神経痛に悩み、右京区西院で専門的な治療が受けられるこちらを受診しました。",
+                "長引く足のしびれと坐骨神経痛をどうにかしたくて、西院駅周辺で治療実績が豊富なこちらの整骨院に相談しました。",
+                "歩くのも辛い坐骨神経痛の症状が悪化し、右京区で根本改善をしてくれると評判の西院整骨院さんに駆け込みました。",
+                "足のしびれが気になり、西院エリアで神経痛の治療に強いこちらの整体院にお世話になっています。",
+                "整形外科では治らなかった坐骨神経痛を改善するため、右京区西院で口コミの良かったこちらの整骨院を頼りました。",
+                "長時間座っていると強くなる坐骨神経痛の痛みとしびれを治したくて、右京区・西院のこちらに通い始めました。",
+                "お尻からふくらはぎにかけての重だるい痛み（坐骨神経痛）に限界を感じ、西院駅近くのこちらで専門治療をお願いしました。"
+            ],
+            'q1-10': [
+                "スポーツ中に痛めた箇所の治療とパフォーマンス向上のため、右京区西院にあるこちらの整骨院を受診しました。",
+                "部活動での怪我を早く治したくて、西院駅周辺でスポーツ障害の治療に強いこちらで診てもらうことにしました。",
+                "趣味のスポーツで痛めた筋肉のケアと根本改善のため、右京区で信頼できる西院整骨院さんに相談しました。",
+                "スポーツのパフォーマンスを上げつつ怪我を予防したくて、西院エリアで専門的な指導もしてくれるこちらに来院しました。",
+                "運動中の関節の痛みや怪我の再発を防ぐため、右京区西院でパーソナルトレーニングもできるこちらの接骨院を頼りました。",
+                "競技復帰を早めるための専門的な治療とケアを受けたくて、右京区・西院でアスリートからも評判のこちらを訪れました。",
+                "運動時の身体の使い方を改善して怪我をしにくい体をつくりたく、西院駅近くのこちらの整骨院にお世話になっています。"
+            ],
+
+            // Q2: 雰囲気（各7パターン）
+            'q2-1': [
+                "院内は常に清潔感があり、初めての整体でもリラックスして過ごせる安心の空間です。",
+                "隅々まで掃除が行き届いていてとても清潔で、リラックスして施術を受けられる心地よい整骨院です。",
+                "院内はとても綺麗で落ち着いた雰囲気があり、初めての来院でも緊張せずにリラックスできました。",
+                "常に清潔に保たれた明るい院内で、心身ともにリラックスして治療に専念できる環境が整っています。",
+                "清潔感あふれる空間が広がっており、整体が初めての方でも安心してリラックスできる雰囲気です。",
+                "衛生管理が徹底されていて清潔感があり、毎回気持ちよくリラックスして施術を受けられる素敵な院内です。",
+                "綺麗に整頓された清潔な空間なので、初めて訪れた時から全く緊張せずリラックスすることができました。"
+            ],
+            'q2-2': [
+                "いつも明るく清潔で、初めての方でも入りやすいアットホームな雰囲気の整骨院です。",
+                "院内は明るく開放的な空間で、お一人でも気軽に通いやすいアットホームな接骨院だと感じました。",
+                "とても明るく清潔感のある雰囲気なので、整骨院が初めてでも躊躇することなく安心して入ることができます。",
+                "アットホームで明るい空気が流れており、どなたでも入りやすく通いやすい整骨院です。",
+                "いつ来ても明るく綺麗で、初めてでも入りやすい安心感と温かみのある院内環境が魅力的です。",
+                "外からも院内の明るい雰囲気が伝わり、初めての方やお一人でも気兼ねなく入りやすいアットホームな空間です。",
+                "清潔感と明るさに満ちた院内で、整骨院特有の入りづらさが全くなく安心して通うことができます。"
+            ],
+            'q2-3': [
+                "院内は開放感があり、活気と温かみがあるため、緊張せずにリラックスして施術を受けられました。",
+                "オープンで開放的な空間の中にも温かみがあり、初めてでも全く緊張せずに施術を受けられる雰囲気です。",
+                "活気がありつつも落ち着ける開放的な院内で、変に緊張することなく自然体で治療に臨めました。",
+                "広々として開放感があり、スタッフの皆さんの温かい対応のおかげで緊張せずに過ごせる接骨院です。",
+                "院内は圧迫感がなく開放的で、活気あふれる雰囲気のおかげでリラックスして施術を受けられます。",
+                "閉塞感のないオープンで開放的な院内なので、初めてでも構えることなくリラックスして相談できました。",
+                "明るく開放感のある空間に温かな活気があり、心身ともに緊張がほぐれる居心地の良さがあります。"
+            ],
+            'q2-4': [
+                "スタッフの皆さんが笑顔で丁寧に挨拶してくださり、とても居心地が良い接骨院です。",
+                "来院するといつもスタッフの方が笑顔で元気よく挨拶してくれ、非常に居心地の良い整骨院です。",
+                "スタッフ全員の明るい笑顔と丁寧な挨拶が印象的で、通うのが楽しみになるほど居心地が良いです。",
+                "笑顔での気持ち良い挨拶とおもてなしの心があり、いつ行っても居心地が良く安心できる空間です。",
+                "先生方の丁寧な挨拶と優しい笑顔に迎えられ、とても温かく居心地の良い雰囲気が漂っています。",
+                "ドアを開けた瞬間から気持ちの良い挨拶と笑顔で迎えてくれるため、非常に居心地が良く安心感があります。",
+                "スタッフの皆さんの丁寧な挨拶と明るい対応が素晴らしく、初めてでもすぐに馴染める居心地の良さです。"
+            ],
+            'q2-5': [
+                "院内は清潔でリラックスできる音楽も流れており、心身ともに癒される整体院です。",
+                "清潔な院内には心地よいBGMが流れており、施術だけでなく空間そのものにも心身ともに癒されます。",
+                "落ち着いた音楽と清潔な空間が広がっていて、日々の疲れや痛みが心身ともに癒される接骨院です。",
+                "リラクゼーション効果のある音楽と綺麗な院内環境のおかげで、リラックスして心身が癒やされます。",
+                "常に清潔で、ヒーリング音楽が流れるリラックス空間となっており、心から癒される大好きな整体院です。",
+                "心地よい音楽が流れる清潔な院内で、体の痛みだけでなく日々のストレスまで癒されるような空間です。",
+                "清潔感のある空間に穏やかなBGMが流れており、施術を受けている間は心からリラックスして癒やされます。"
+            ],
+
+            // Q3: 施術・スタッフ（各7パターン）
+            'q3-1': [
+                "先生が事前のカウンセリングで、痛みの原因や体の状態を専門的な視点からとても丁寧に説明してくれました。",
+                "施術前のカウンセリングが非常に丁寧で、なぜ痛むのかを専門的な知見から分かりやすく解説してくれました。",
+                "事前の問診と検査が徹底されており、現在の体の状態や根本的な痛みの原因を詳細かつ丁寧に説明していただき安心しました。",
+                "先生が私の痛みの原因をプロの視点から的確に見抜き、今後の治療方針も含めてとても親身に説明してくださいました。",
+                "カウンセリングにしっかりと時間をかけ、専門的な言葉を使わずに体の状態を分かりやすく丁寧に説明してくれました。",
+                "痛みの出ている箇所だけでなく身体全体のバランスを診た上で、原因と改善への道筋を論理的かつ丁寧に説明してくれました。",
+                "こちらの疑問や不安に対しても一つひとつ丁寧な説明で答えてくださり、納得感を持って施術を受けることができました。"
+            ],
+            'q3-2': [
+                "こちらの独自の背骨矯正を受けたおかげで、体の歪みが整い、長年の不調がスッキリと改善しました。",
+                "本格的な背骨矯正をしていただいた結果、気になっていた姿勢の歪みが整い、長年の頑固な不調が嘘のようにスッキリしました。",
+                "確かな技術の背骨矯正を受けるたびに体のバランスが整っていくのを感じ、慢性的な不調が劇的に改善されました。",
+                "こちらで背骨矯正の施術を受けてから体の軸がしっかり整い、ずっと抱えていた辛い不調が解消されスッキリしました。",
+                "専門的な背骨矯正治療のおかげで全身の歪みがリセットされ、長引いていた不調が根本からスッキリと良くなりました。",
+                "丁寧かつ的確な背骨矯正によって本来の正しい姿勢を取り戻すことができ、慢性的な体の重だるさが一気に解消しました。",
+                "背骨の歪みを整える専門施術を受けたことで身体全体の連動性が良くなり、長年の悩みがスッキリ改善して驚いています。"
+            ],
+            'q3-3': [
+                "治りにくい頑固な痛みに対し、最新機器のショックマスターを使った施術をしていただき、非常に高い効果を感じました。",
+                "なかなか取れない激しい痛みでしたが、ショックマスターという専門機器を用いた施術を受けたところ、驚くほど高い効果を実感しました。",
+                "他では治らなかった頑固な痛みに対してショックマスター治療を提案していただき、目に見えて症状が改善するのを感じました。",
+                "最新のショックマスターを使った施術をしていただいたおかげで、長期間悩まされていた辛い痛みが劇的に和らぎました。",
+                "慢性化していた痛みに対してショックマスター治療をしていただき、手技だけでは届かない深い部分までしっかりと効果を感じられました。",
+                "圧力波治療器であるショックマスターによるピンポイントなアプローチのおかげで、頑固な痛みが早期に和らぎ効果を実感しています。",
+                "専門機器のショックマスターを使った的確な治療のおかげで、長引いていた辛い痛みが驚くほどスムーズに改善しました。"
+            ],
+            'q3-4': [
+                "施術だけでなく、パーソナルトレーニングを通じて「痛みを繰り返さない体づくり」まで丁寧にサポートしてくれます。",
+                "痛みをマッサージで取るだけでなく、パーソナルトレーニングで筋力をつけ、再発しない体づくりまで徹底してサポートしてくれます。",
+                "治療後のメンテナンスとしてパーソナルトレーニングも指導していただき、痛みを繰り返さない強い体づくりができて非常に助かっています。",
+                "根本改善を目指し、施術と併用してパーソナルトレーニングも受けられるため、痛みの出ない体づくりをトータルでサポートしてもらえます。",
+                "単なる整体にとどまらず、パーソナルトレーニングによる運動指導まで丁寧に行ってくれるので、再発予防の体づくりが完璧にできます。",
+                "一人ひとりの状態に合わせたパーソナルトレーニングを指導してもらえるため、痛みの解消だけでなく弱点克服と再発防止に繋がっています。",
+                "施術で整えた体を維持するためのパーソナルトレーニングまで一貫して受けられるので、根本的な体質改善を実感できています。"
+            ],
+            'q3-5': [
+                "身体の構造を知り尽くした経験豊富な先生が担当してくださり、高い技術力と専門知識で施術してくれるため、非常に頼りになります。",
+                "解剖学や身体の構造に精通した先生の技術力は本物で、圧倒的な専門知識に基づく的確な施術は本当に頼りになります。",
+                "経験豊富で人体を知り尽くした先生が施術してくれるので安心感が違い、その高い技術力と深い専門知識には絶大な信頼を置いています。",
+                "確かな技術力と医学的な専門知識を兼ね備えたベテランの先生が担当してくださるため、どんな痛みでも安心して任せられます。",
+                "身体のプロフェッショナルとして豊富な知識と熟練の技術を持つ先生方に施術していただき、その頼もしさにいつも感謝しています。",
+                "触診だけで痛みの根本原因を正確に特定する高い技術力と深い専門知識をお持ちの先生ばかりで、心から頼りにしています。",
+                "豊富な臨床経験と専門知識に裏打ちされた確かな技術力で施術してくださるため、他の院では良くならなかった方にも頼れる存在です。"
+            ],
+
+            // Q4: 通いやすさ（各7パターン）
+            'q4-1': [
+                "阪急西院駅から徒歩圏内で右京区内からのアクセスも良く、仕事帰りや買い物のついでにも通院しやすいです。",
+                "阪急西院駅から近くアクセス抜群で、右京区周辺での買い物や仕事の帰りにもフラッと立ち寄りやすい便利な立地です。",
+                "最寄りである西院駅からのアクセスが非常に良く、右京区内にお住まいの方なら仕事帰りなどにも無理なく通いやすいと思います。",
+                "阪急西院駅のすぐ近くにありアクセス至便なので、右京区での用事の合間や仕事終わりでも通院のストレスが全くありません。",
+                "西院駅から徒歩ですぐの場所にあるため、右京区内でアクセスしやすく、生活圏内の中で非常に通いやすい整骨院です。",
+                "阪急西院駅からの道順も分かりやすくアクセスが良好なので、右京区周辺から継続して通院するのに大変便利な環境です。",
+                "駅近でアクセス面に優れているため、天候が悪い日や仕事帰りでも負担なく通い続けることができて助かっています。"
+            ],
+            'q4-2': [
+                "完全予約制なので待ち時間がなく、忙しい合間でも自分のスケジュール通りにスムーズに通院できて助かります。",
+                "待ち時間ゼロの完全予約制を採用されているため、仕事や家事で忙しい毎日でも計画通りにスムーズに通院できています。",
+                "完全に予約制となっているおかげで院内で長く待たされることがなく、自分の貴重な時間を無駄にせず通院できて大変ありがたいです。",
+                "完全予約制のおかげで案内がいつもスムーズで待ち時間がなく、スケジュールの合間を縫って通院する身としては非常に助かります。",
+                "予約した時間に必ず施術を始めてもらえる完全予約制なので、その後の予定も立てやすく、忙しい方でもスムーズに通えるのが魅力です。",
+                "徹底された完全予約制により待合室での待ち時間がほとんどなく、忙しい日常の中でもストレスフリーで通院できています。",
+                "完全予約制で一人ひとりの施術時間がしっかり確保されているため、待ち時間なくスムーズに案内してもらえて快適です。"
+            ],
+            'q4-3': [
+                "平日は夜遅くまで受付しているので、残業などの仕事終わりでも焦らずに通院できて大変助かっています。",
+                "夜遅い時間まで診察を受け付けてくれているので、平日仕事で残業になった日でも焦らずに通院することができてとても助かります。",
+                "平日夜遅くまで営業されているため、仕事が終わってからでも余裕を持って通院でき、働きながらでもしっかり治療に専念できます。",
+                "受付時間が夜遅くまで設定されているおかげで、多忙な仕事終わりでもしっかりと施術を受けることができ大変重宝しています。",
+                "仕事終わりの遅い時間帯でも快く受け入れてくれるので、日中通えない社会人にとっては焦らず通院できる最高の環境です。",
+                "平日の夜間も受付対応しているため、退勤後にそのまま立ち寄ることができ、無理なく治療を継続できています。",
+                "仕事が長引いた日でも通えるよう夜遅くまで開いているので、働く世代にとって非常に通いやすい整骨院です。"
+            ],
+            'q4-4': [
+                "LINEで簡単に予約や日時の変更ができるため、自分のスケジュールに合わせて柔軟に通えてとても便利です。",
+                "スマホのLINEから24時間いつでも予約や変更の手続きができるので、自分の都合に合わせて柔軟に通院スケジュールが組めて便利です。",
+                "いちいち電話しなくてもLINEで手軽に予約枠の確保や日時変更ができるため、忙しい中でも非常に通いやすく重宝しています。",
+                "LINE予約システムが導入されており、ちょっとした空き時間に予約や変更がサクッとできるため、柔軟な通院が可能で助かります。",
+                "予約のやり取りや日時の変更がすべてLINEで完結するため、電話の手間がなく、自分のペースで柔軟に通えて本当に便利です。",
+                "急な予定変更があってもLINEからスムーズに予約調整ができるため、忙しい中でも無理なく通院を続けられています。",
+                "普段使っているLINEで気軽に予約や相談ができるシステムが整っており、通いやすさの面でも非常に満足しています。"
+            ],
+            'q4-5': [
+                "京都市右京区・西院の中心部にあるので、通院の前後で買い物や用事も済ませやすく、立地が最高です。",
+                "右京区西院のとても便利な中心部にあるため、整骨院に通うついでに周辺で買い物や用事を済ませることができ、立地の良さに満足しています。",
+                "京都市右京区の西院エリアでも特に便利な場所にあるので、通院前後でのちょっとした買い物にも困らず、最高の立地環境だと思います。",
+                "西院の中心地に位置しているため、治療の行き帰りに周辺の施設で用事を済ませやすく、右京区内でもトップクラスに便利な立地です。",
+                "右京区西院の利便性が高いエリアにあるおかげで、通院と生活の用事をセットで済ませることができ、とても通いやすい環境が整っています。",
+                "周辺にお店や施設が充実している右京区・西院の好立地にあるため、お出かけや買い物のついでに立ち寄りやすく便利です。",
+                "京都市右京区西院の分かりやすい場所にあるので迷うこともなく、通院の前後で用事も済ませられる理想的な立地です。"
+            ],
+
+            // Q5: 変化（各7パターン）
+            'q5-1': [
+                "施術後は驚くほど体が軽くなり、長年悩んでいた辛い痛みがすっかり引いて本当に感動しました！",
+                "施術が終わった直後から羽が生えたように体が軽くなり、ずっと苦しんでいた激痛が嘘のように引いて心の底から感動しました。",
+                "魔法のように体がスッキリと軽くなり、長年どこへ行っても治らなかった辛い痛みがすっかり消えて本当に感動しています！",
+                "施術後は全身の重だるさが驚くほどなくなり、長期間悩まされ続けた痛みがすっかり良くなって感動のあまり言葉もありません。",
+                "一回の施術でも体が劇的に軽くなるのを実感でき、長年耐え続けてきた辛い痛みがすっかり引いて本当に感動の連続です！",
+                "帰り道では自分の体ではないかと思うほど軽くなり、あれほど辛かった痛みがスッと引いていて本当に感動しました。",
+                "施術を受けた直後から可動域が広がって体が軽くなり、長年抱えていた痛みが和らいだことに心から感動しています！"
+            ],
+            'q5-2': [
+                "通うたびに確実に体が良くなっているのを実感できます。健康維持のメンテナンスとしてこれからもお世話になります。",
+                "治療を重ねるごとに少しずつ確実に痛みが和らいでいくのを実感しており、今後の健康維持のためにも定期的なメンテナンスでお世話になるつもりです。",
+                "通院するたびに体の調子が上向きになっているのが分かり、すっかり頼りにしています。今後も予防とメンテナンスのために長く通い続けたいです。",
+                "回数を重ねるごとに確実に身体が良い方向へ変化しているのを実感できます。これからは良い状態をキープするためのメンテナンスで通う予定です。",
+                "丁寧に施術していただくたびに体が楽になっていくのを実感しています。すっかり良くなった後も、健康維持のメンテナンスとしてお世話になります。",
+                "計画的な施術のおかげで回を重ねるごとに不調が改善されており、これからも身体のケアとメンテナンスでお世話になりたいと思います。",
+                "通院を続ける中で確実に身体のバランスが整ってきたと実感しており、今後も定期的なメンテナンスで通い続けるつもりです。"
+            ],
+            'q5-3': [
+                "確かな技術でしっかり効果を感じられるので、右京区や西院駅周辺で優良な整骨院・整体を探している方に自信を持っておすすめしたいです！",
+                "圧倒的な技術力で目に見える効果を実感できるので、右京区・西院エリアで本当に治る整骨院を探している方にはぜひ一度行ってみてとおすすめしたいです。",
+                "ごまかしのない確かな技術でしっかりと身体が変わるのを感じられるため、右京区や西院駅周辺で整体院選びに迷っている方に自信を持っておすすめします！",
+                "治療効果の高さに驚いており、右京区西院で信頼できる優秀な整骨院を探している家族や友人にも、自信を持っておすすめしたいと思える素晴らしい院です。",
+                "確実な技術で痛みを根本から取ってくれるので、右京区や西院駅周辺でどこに通うべきか悩んでいる方には、迷わずこちらをおすすめしたいです！",
+                "一人ひとりに合わせた丁寧な施術で確実に結果を出してくれるので、右京区・西院で根本改善できる整骨院をお探しの方に強くおすすめします。",
+                "技術力・対応ともに大満足のクオリティなので、西院駅周辺や右京区エリアで信頼できる整体・整骨院を探している方に自信を持っておすすめできます！"
+            ],
+            'q5-4': [
+                "どこに行っても良くならなかった痛みが和らぎ、「もっと早く右京区の西院整骨院さんに相談すればよかった」と心から思っています。",
+                "他の病院や整体では改善しなかった痛みがスッと和らぎ、「もっと早くから右京区の西院整骨院さんに診てもらっていれば…」と本気で後悔したほどです。",
+                "長年どこに行ってもダメだった頑固な痛みがみるみる良くなり、「もっと早く右京区の西院整骨院さんに出会いたかった」と心から感じています。",
+                "何をしても治らなかった辛い痛みが嘘のように和らぎ、今では「もっと早くに右京区の西院整骨院さんに相談しに来ればよかった」と強く思っています。",
+                "他院でサジを投げられた痛みが見事に改善され、「もっと早く右京区の西院整骨院さんを頼っていればあんなに苦しまずに済んだのに」と思うほど感謝しています。",
+                "もっと早く右京区の西院整骨院さんに通っていればよかったと思うほど、長年のつらい痛みが驚くほど楽になり感謝の気持ちでいっぱいです。",
+                "今まで色々な所を試して遠回りしましたが、最初から右京区の西院整骨院さんに来ていればよかったと心から思える素晴らしい治療でした。"
+            ],
+            'q5-5': [
+                "痛みが根本から取れたおかげで、日常生活や趣味のスポーツがとても楽に楽しめるようになり、大変感謝しています。",
+                "痛みの根本原因を解消していただいたおかげで、毎日の生活や大好きな趣味のスポーツが心から楽しめるようになり、先生方には感謝しかありません。",
+                "しつこい痛みが根本から改善されたことで、仕事や日常生活、趣味のスポーツまで本当に楽にこなせるようになり、大変感謝しております。",
+                "根本治療のおかげで痛みに怯えることなく、日常生活や趣味のスポーツに全力で打ち込めるようになり、毎日がとても楽しく感謝の気持ちでいっぱいです。",
+                "痛みが根本から消え去ったおかげで、以前のように日常生活や趣味のスポーツが思い切り楽しめるようになり、こちらの整骨院には深く感謝しています。",
+                "辛かった痛みが根本から改善されたことで日々の動作が驚くほどスムーズになり、仕事もプライベートも快適に過ごせて大変感謝しています。",
+                "痛みを気にせず日常生活や運動を思い切り楽しめるようになったのは先生方のおかげであり、根本から治していただき心から感謝しています。"
+            ]
+        };
+
+        // 履歴ベースで重複を避けつつランダムに選ぶ関数
+        function getVariationText(optionKey) {
+            const texts = reviewVariations[optionKey];
+            if (!texts) return "";
+
+            const historyKey = 'review_history_' + optionKey;
+            let history = [];
+            try {
+                history = JSON.parse(localStorage.getItem(historyKey)) || [];
+            } catch (e) {
+                history = [];
+            }
+
+            // 直近（最大5回分）使われていないインデックスの候補を作成
+            const maxHistory = Math.min(5, texts.length - 1);
+            const recentUsed = history.slice(-maxHistory);
+            let availableIndices = [];
+            
+            for (let i = 0; i < texts.length; i++) {
+                if (!recentUsed.includes(i)) {
+                    availableIndices.push(i);
+                }
+            }
+
+            // 万が一候補が空なら全インデックスを候補にする
+            if (availableIndices.length === 0) {
+                availableIndices = texts.map((_, i) => i);
+            }
+
+            // 候補の中から完全にランダムで1つ選択（毎回違うパターンになる）
+            const chosenIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
+
+            // 履歴を更新して保存
+            history.push(chosenIndex);
+            if (history.length > 10) history.shift();
+            localStorage.setItem(historyKey, JSON.stringify(history));
+
+            return texts[chosenIndex];
+        }
+
+        // ランダムな自然接続フレーズ（冒頭や段落のマンネリ防止用）
+        function getRandomConnector(type) {
+            const connectors = {
+                symptomIntro: ["", "", "以前から", "実は", "ここ最近、"],
+                praiseIntro: ["", "", "特に印象的だったのは、", "実際に通ってみて感じたのは、", "何より嬉しいのが、"],
+                accessIntro: ["", "", "また、", "通いやすさの面でも、", "それに加えて、"],
+                resultIntro: ["", "", "おかげさまで、", "結果として、", "今では"]
+            };
+            const list = connectors[type] || [""];
+            return list[Math.floor(Math.random() * list.length)];
+        }
+
+        function generateReview() {
+            const q1Key = document.getElementById('q1').value;
+            const q2Key = document.getElementById('q2').value;
+            const q3Key = document.getElementById('q3').value;
+            const q4Key = document.getElementById('q4').value;
+            const q5Key = document.getElementById('q5').value;
+            
+            const errorMsg = document.getElementById('errorMessage');
+            const resultArea = document.getElementById('resultArea');
+
+            // いずれかが未選択の場合、エラーメッセージを表示して処理を中断
+            if (!q1Key || !q2Key || !q3Key || !q4Key || !q5Key) {
+                errorMsg.classList.remove('hidden');
+                // 少しスクロールしてエラーを見やすくする
+                window.scrollBy({ top: -50, behavior: 'smooth' });
+                return;
+            }
+
+            // エラーがない場合はメッセージを隠す
+            errorMsg.classList.add('hidden');
+
+            // 各キーからバリエーション文章を取得
+            const text1 = getVariationText(q1Key);
+            const text2 = getVariationText(q2Key);
+            const text3 = getVariationText(q3Key);
+            const text4 = getVariationText(q4Key);
+            const text5 = getVariationText(q5Key);
+
+            // 文章の構成（順番）も毎回変わるように6パターンを用意し、履歴ベースでランダム選択
+            const structureHistoryKey = 'review_structure_history';
+            let structHistory = [];
+            try {
+                structHistory = JSON.parse(localStorage.getItem(structureHistoryKey)) || [];
+            } catch (e) {
+                structHistory = [];
+            }
+
+            const totalStructures = 6;
+            const recentStructs = structHistory.slice(-4); // 直近4回と同じ構成を避ける
+            let availableStructs = [];
+            for (let i = 0; i < totalStructures; i++) {
+                if (!recentStructs.includes(i)) {
+                    availableStructs.push(i);
+                }
+            }
+            if (availableStructs.length === 0) {
+                availableStructs = [0, 1, 2, 3, 4, 5];
+            }
+
+            const structureIndex = availableStructs[Math.floor(Math.random() * availableStructs.length)];
+            structHistory.push(structureIndex);
+            if (structHistory.length > 10) structHistory.shift();
+            localStorage.setItem(structureHistoryKey, JSON.stringify(structHistory));
+
+            let reviewText = "";
+            switch (structureIndex) {
+                case 0:
+                    // パターンA：王道・時系列型（きっかけ → 施術・雰囲気・通いやすさ → 変化）
+                    reviewText = `${text1}\n\n${getRandomConnector('praiseIntro')}${text3}\n${text2}\n${getRandomConnector('accessIntro')}${text4}\n\n${getRandomConnector('resultIntro')}${text5}`;
+                    break;
+                case 1:
+                    // パターンB：結論・感動ファースト型（変化・おすすめ → きっかけ・施術 → 雰囲気・通いやすさ）
+                    reviewText = `${text5}\n\n${getRandomConnector('symptomIntro')}${text1}\n${text3}\n\n${text2}\n${getRandomConnector('accessIntro')}${text4}`;
+                    break;
+                case 2:
+                    // パターンC：立地・雰囲気から入る自然な導入型（通いやすさ・雰囲気 → きっかけ・施術 → 変化）
+                    reviewText = `${text4}\n${text2}\n\n${getRandomConnector('symptomIntro')}${text1}\n${getRandomConnector('praiseIntro')}${text3}\n\n${getRandomConnector('resultIntro')}${text5}`;
+                    break;
+                case 3:
+                    // パターンD：施術の良さピックアップ型（施術 → きっかけ → 変化 → 通いやすさ・雰囲気）
+                    reviewText = `${text3}\n${text1}\n\n${getRandomConnector('resultIntro')}${text5}\n\n${getRandomConnector('accessIntro')}${text4}\n${text2}`;
+                    break;
+                case 4:
+                    // パターンE：院内の雰囲気ファースト型（雰囲気 → きっかけ・施術 → 変化・通いやすさ）
+                    reviewText = `${text2}\n\n${getRandomConnector('symptomIntro')}${text1}\n${text3}\n\n${getRandomConnector('resultIntro')}${text5}\n${text4}`;
+                    break;
+                case 5:
+                    // パターンF：お悩み解決ストーリー型（きっかけ・変化 → 施術・通いやすさ・雰囲気）
+                    reviewText = `${text1}\n${getRandomConnector('resultIntro')}${text5}\n\n${getRandomConnector('praiseIntro')}${text3}\n${text4}\n${text2}`;
+                    break;
+            }
+            
+            document.getElementById('reviewText').value = reviewText;
+            
+            // 結果エリアを表示
+            resultArea.classList.remove('hidden');
+            document.getElementById('googleBtn').classList.add('hidden'); // コピーされるまで隠す
+            document.getElementById('copyToast').classList.add('hidden');
+            
+            // 結果エリアへスムーズにスクロール
+            setTimeout(() => {
+                resultArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+
+        function copyText() {
+            const textarea = document.getElementById('reviewText');
+            // テキストエリアを選択状態にする（ユーザーへの視覚的フィードバック）
+            textarea.select();
+            textarea.setSelectionRange(0, 99999); // モバイルブラウザ対応
+
+            let copied = false;
+            try {
+                // iFrame内や幅広い環境で動作しやすい execCommand を優先実行
+                copied = document.execCommand('copy');
+            } catch (e) {
+                copied = false;
+            }
+
+            if (copied) {
+                document.getElementById('copyToast').classList.remove('hidden');
+                document.getElementById('googleBtn').classList.remove('hidden');
+                document.getElementById('googleBtn').classList.add('flex');
+            } else if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(textarea.value).then(() => {
+                    document.getElementById('copyToast').classList.remove('hidden');
+                    document.getElementById('googleBtn').classList.remove('hidden');
+                    document.getElementById('googleBtn').classList.add('flex');
+                }).catch(() => {
+                    showCopyError(textarea);
+                });
+            } else {
+                showCopyError(textarea);
+            }
+        }
+
+        function showCopyError(textarea) {
+            if (!document.getElementById('copyErrorMsg')) {
+                const errorDiv = document.createElement('div');
+                errorDiv.id = 'copyErrorMsg';
+                errorDiv.className = "text-red-500 text-sm mt-2 mb-2 font-bold text-center";
+                errorDiv.innerText = "自動コピーできませんでした。文章を長押しして手動でコピーしてください。";
+                textarea.parentNode.insertBefore(errorDiv, textarea.nextSibling);
+            }
+        }
+
+        function copyText() {
+            const textarea = document.getElementById('reviewText');
+            // テキストエリアを選択状態にする（ユーザーへの視覚的フィードバック）
+            textarea.select();
+            textarea.setSelectionRange(0, 99999); // モバイルブラウザ対応
+
+            // クリップボードAPIを使用してコピー
+            navigator.clipboard.writeText(textarea.value).then(() => {
+                // コピー成功時の処理
+                document.getElementById('copyToast').classList.remove('hidden');
+                document.getElementById('googleBtn').classList.remove('hidden');
+                document.getElementById('googleBtn').classList.add('flex'); // hiddenを外した後にflexを当てる
+            }).catch(err => {
+                // 古いブラウザ等で失敗した場合のフォールバック
+                try {
+                    document.execCommand('copy');
+                    document.getElementById('copyToast').classList.remove('hidden');
+                    document.getElementById('googleBtn').classList.remove('hidden');
+                    document.getElementById('googleBtn').classList.add('flex');
+                } catch (e) {
+                    // フォールバックも失敗した場合
+                    const errorDiv = document.createElement('div');
+                    errorDiv.className = "text-red-500 text-sm mt-2 font-bold";
+                    errorDiv.innerText = "自動コピーできませんでした。長押しして手動でコピーしてください。";
+                    textarea.parentNode.insertBefore(errorDiv, textarea.nextSibling);
+                }
+            });
+        }
+
+        function showQRCode() {
+            const modal = document.getElementById('qrModal');
+            const container = document.getElementById('qrImageContainer');
+            modal.classList.remove('hidden');
+            
+            // 現在のページのURLを取得
+            let currentUrl = window.location.href;
+            
+            // プレビュー環境など、特殊なURLの場合はダミーURLを使用（エラー回避）
+            if(currentUrl.startsWith('about:') || currentUrl.startsWith('blob:') || currentUrl.startsWith('file:')) {
+                currentUrl = 'https://example.com/saiin-seikotsuin-review'; 
+            }
+
+            // QRコード生成APIを呼び出して画像タグを作成
+            const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(currentUrl)}&color=ea580c`;
+            
+            container.innerHTML = `<img src="${qrApiUrl}" alt="QR Code" class="w-48 h-48 mx-auto shadow-sm rounded-xl">`;
+        }
+
+        function closeQRCode() {
+            document.getElementById('qrModal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
